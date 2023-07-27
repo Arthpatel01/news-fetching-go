@@ -60,7 +60,7 @@ func printNews(articles []byte) {
 }
 
 func main() {
-	apiKey := "b588d99cadfb43eb8b8946b92f311a02"
+	apiKey := ""
 
 	fmt.Println("\n\nEnter Topic of News: ")
 	var topic string
