@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 func fetchNews(apiKey, category, language string) ([]byte, error) {
@@ -59,8 +60,17 @@ func printNews(articles []byte) {
 	}
 }
 
+func getApiKey() string {
+	apiKey := os.Getenv("NEWS_API_KEY")
+	if apiKey == "" {
+		fmt.Println("API key not set. Please set the NEWS_API_KEY environment variable.")
+		os.Exit(1)
+	}
+	return apiKey
+}
+
 func main() {
-	apiKey := "b588d99cadfb43eb8b8946b92f311a02"
+	apiKey := getApiKey()
 
 	fmt.Println("\n\nEnter Topic of News: ")
 	var topic string
